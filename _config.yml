@@ -17,3 +17,5 @@ gems:
 markdown: kramdown
 
 theme: jekyll-theme-cayman
+
+permalink: /:title.html
