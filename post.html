@@ -1,0 +1,59 @@
+---
+layout: default
+title: Posts By Tags
+permalink: /tags
+---
+
+{% for post in paginator.posts %}
+<div class="posts">
+  <h1>
+    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+  </h1>
+  {% if post.image.teaser %}
+  <a href="{{ site.baseurl }}{{ post.url }}"><img src="{{ site.baseurl }}/assets/img/{{ post.image.teaser }}"></a>
+  {% endif %}
+  <p>
+    {{ post.content | strip_html | truncate: 350 }} <a href="{{ site.baseurl }}{{ post.url }}">Read more</a>
+    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%Y/%m/%d" }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</span>
+  </p>
+</div>
+<hr />
+{% endfor %}
+
+<!--<div id="home">-->
+  <!--<h1>Blog Posts</h1>-->
+  <!--<ul class="posts">-->
+    <!--{% for post in paginator.posts %}-->
+    <!--<li><span>{{ post.date | date: "%Y/%m/%d" }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>-->
+    <!--{% endfor %}-->
+  <!--</ul>-->
+<!--</div>-->
+
+<!--<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeY1YvLgnxHf7r5bnRrwHOUmsMjXyVgA8YdIWzOkeu0p_KSog/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます...</iframe>-->
+
+<!-- ページネーションリンク -->
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+  <a href="{{ paginator.previous_page_path }}">&laquo; Prev</a>
+  {% else %}
+  <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+    <em>{{ page }}</em>
+    {% elsif page == 1 %}
+    <a href="{{ site.baseurl }}">{{ page }}</a>
+    {% else %}
+    <a href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path }}">Next &raquo;</a>
+  {% else %}
+  <span>Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}
