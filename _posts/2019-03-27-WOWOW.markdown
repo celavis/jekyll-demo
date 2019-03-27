@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "WOWOW"
+author: "test"
+date:   2019-03-26 17:50:00
+categories: post
+tags: [documentation,sample]
+image:
+  feature: cutting.jpg
+  teaser: cutting-teaser.jpg
+  credit:
+  creditlink:
+---
+
+test
